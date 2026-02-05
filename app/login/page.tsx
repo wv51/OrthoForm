@@ -122,7 +122,7 @@ export default function LoginPage() {
         </CardContent>
         <CardFooter className="flex justify-center border-t border-slate-50 dark:border-slate-800 pt-4">
           <p className="text-xs text-muted-foreground text-center">
-            ระบบจัดการแบบสอบถามสำหรับคลินิกกระดูกและข้อ<br/>
+            ระบบจัดการแบบสอบถาม<br/>
             หากลืมรหัสผ่าน กรุณาติดต่อผู้ดูแลระบบ
           </p>
         </CardFooter>

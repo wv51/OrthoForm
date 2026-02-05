@@ -192,53 +192,88 @@ export default function PatientSurvey({ params }: { params: Promise<{ id: string
   }
 
   if (submitted) {
-    return (
-      <div className="max-w-2xl mx-auto py-20 px-4 text-center">
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center px-4 relative overflow-hidden">
+      {/* Background Decorative Elements */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl opacity-30 pointer-events-none">
+        <div className="absolute top-0 left-0 w-72 h-72 bg-emerald-200 rounded-full filter blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-green-200 rounded-full filter blur-[120px] animate-pulse"></div>
+      </div>
+
+      <div className="max-w-2xl w-full relative z-10">
         <motion.div
-          initial={{ scale: 0, opacity: 0 }}
+          initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, type: "spring" }}
-          className="relative"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-white/40 backdrop-blur-xl border border-white/20 rounded-[3rem] p-12 md:p-16 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] text-center"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-emerald-400/20 rounded-full blur-3xl"></div>
-          <div className="relative bg-gradient-to-br from-green-50 to-emerald-50 w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
+          {/* Animated Success Icon */}
+          <div className="relative w-32 h-32 mx-auto mb-10">
             <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
+              initial={{ rotate: -10, scale: 0 }}
+              animate={{ rotate: 0, scale: 1 }}
+              transition={{ 
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+                delay: 0.2 
+              }}
+              className="relative z-10 w-full h-full bg-gradient-to-tr from-emerald-500 to-green-400 rounded-3xl shadow-lg flex items-center justify-center rotate-6"
             >
-              <CheckCircle2 className="h-16 w-16 text-green-600" />
+              <CheckCircle2 className="h-16 w-16 text-white" strokeWidth={2.5} />
             </motion.div>
+            
+            {/* Soft Shadow Ring */}
+            <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full transform scale-150 -z-10"></div>
           </div>
-        </motion.div>
-        
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="space-y-6"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-            ส่งข้อมูลเรียบร้อยแล้ว
-          </h1>
-          <p className="text-xl text-slate-600 leading-relaxed max-w-md mx-auto">
-            ขอบคุณสำหรับข้อมูลและการสละเวลาทำแบบสอบถามครับ/ค่ะ
-          </p>
+
+          {/* Content */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="pt-8"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
           >
-            <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full mx-auto mb-6"></div>
-            <p className="text-sm text-slate-500 font-medium tracking-wider uppercase">
-              ข้อมูลของคุณมีความสำคัญอย่างยิ่งต่อเรา
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">
+              <span className="bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent">
+                ส่งข้อมูลเรียบร้อยแล้ว
+              </span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-slate-600 font-light leading-relaxed mb-10">
+              ขอบคุณสำหรับข้อมูลและการสละเวลาทำแบบสอบถามค่ะ <br className="hidden md:block" />
+              ความเห็นของคุณช่วยให้เราพัฒนาได้ดียิ่งขึ้น
             </p>
+
+            {/* Decorative Divider & Footer */}
+            <motion.div
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: "100%", opacity: 1 }}
+              transition={{ delay: 0.8, duration: 1 }}
+              className="flex flex-col items-center gap-6"
+            >
+              <div className="h-px w-24 bg-gradient-to-r from-transparent via-emerald-200 to-transparent"></div>
+              
+              <div className="flex items-center gap-2 text-emerald-600 font-semibold tracking-widest text-xs uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                Submission Received
+              </div>
+            </motion.div>
           </motion.div>
         </motion.div>
+        
+        {/* Secondary Action (Optional) */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="mt-8 text-center"
+        >
+          
+        </motion.div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   if (!survey) return <div>ไม่พบแบบสอบถาม</div>;
 
@@ -267,7 +302,7 @@ export default function PatientSurvey({ params }: { params: Promise<{ id: string
             แบบสอบถามปิดให้บริการ
           </h1>
           <p className="text-lg text-slate-600 leading-relaxed max-w-lg mx-auto">
-            ขออภัยครับ/ค่ะ แบบสอบถามนี้ได้ปิดรับการตอบกลับชั่วคราว หากต้องการสอบถามข้อมูลเพิ่มเติม กรุณาติดต่อเจ้าหน้าที่
+            ขออภัยค่ะ แบบสอบถามนี้ได้ปิดรับการตอบกลับชั่วคราว หากต้องการสอบถามข้อมูลเพิ่มเติม กรุณาติดต่อเจ้าหน้าที่
           </p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -275,15 +310,7 @@ export default function PatientSurvey({ params }: { params: Promise<{ id: string
             transition={{ delay: 0.5 }}
             className="pt-8"
           >
-            <Link href="/">
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="rounded-2xl px-8 py-3 text-lg font-medium hover:bg-slate-100 transition-all duration-300"
-              >
-                กลับหน้าหลัก
-              </Button>
-            </Link>
+            
           </motion.div>
         </motion.div>
       </div>
@@ -609,7 +636,7 @@ export default function PatientSurvey({ params }: { params: Promise<{ id: string
               </Button>
             </motion.div>
             <p className="text-center text-slate-400 text-xs mt-6 font-medium tracking-widest uppercase">
-              Powered by OrthoForm Pro
+              Powered by Wick
             </p>
           </div>
       </form>

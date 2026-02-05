@@ -64,8 +64,8 @@ export default async function Dashboard() {
     <div className="container mx-auto py-8 px-4 space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">แดชบอร์ดเจ้าหน้าที่</h1>
-          <p className="text-slate-500 dark:text-slate-400 text-lg">ยินดีต้อนรับกลับมาครับ คุณหมอ</p>
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">แดชบอร์ด</h1>
+          <p className="text-slate-500 dark:text-slate-400 text-lg">ยินดีต้อนรับ</p>
         </div>
         <Link href="/create">
           <Button className="gap-2 h-11 px-6 font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105">
