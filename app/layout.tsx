@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin", "thai"],
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({

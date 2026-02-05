@@ -267,7 +267,7 @@ export default function CreateSurvey() {
       const questionsToInsert = validQuestions.map((q, index) => {
         let dbLogic = null;
         if (q.logic && q.logic.triggerQuestionId) {
-          const triggerIndex = validQuestions.findIndex(vq => vq.id === q.logic.triggerQuestionId);
+          const triggerIndex = validQuestions.findIndex(vq => vq.id === q.logic!.triggerQuestionId);
           if (triggerIndex !== -1 && triggerIndex < index) {
             dbLogic = {
               action: 'show',

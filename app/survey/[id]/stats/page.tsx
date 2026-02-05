@@ -599,7 +599,7 @@ export default function SurveyStats({ params }: { params: Promise<{ id: string }
         body: tableData,
         styles: { font: 'Sarabun', cellPadding: 5, fontSize: 10 },
         headStyles: { font: 'Sarabun', fontStyle: 'bold' },
-        columnStyles: { 0: { fontStyle: 'bold', width: 80 } }
+        columnStyles: { 0: { fontStyle: 'bold', cellWidth: 80 } }
       });
 
       doc.save(`Response-${responseId.slice(0, 8)}.pdf`);
@@ -1035,7 +1035,7 @@ export default function SurveyStats({ params }: { params: Promise<{ id: string }
                             cx="50%"
                             cy="50%"
                             labelLine={false}
-                            label={({ name, percent }) => `${name} (${(percent * 100).toFixed(0)}%)`}
+                            label={({ name, percent }: any) => `${name} (${((percent || 0) * 100).toFixed(0)}%)`}
                             outerRadius={80}
                             fill="#8884d8"
                             dataKey="value"

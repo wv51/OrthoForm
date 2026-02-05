@@ -280,7 +280,7 @@ export default function EditSurvey({ params }: { params: Promise<{ id: string }>
         .map(q => {
           let dbLogic = null;
           if (q.logic && q.logic.triggerQuestionId) {
-            const triggerIndex = validQuestions.findIndex(vq => vq.id === q.logic.triggerQuestionId);
+            const triggerIndex = validQuestions.findIndex(vq => vq.id === q.logic!.triggerQuestionId);
             if (triggerIndex !== -1 && triggerIndex < validQuestions.indexOf(q)) {
               dbLogic = {
                 action: 'show',
@@ -311,7 +311,7 @@ export default function EditSurvey({ params }: { params: Promise<{ id: string }>
         .map(q => {
           let dbLogic = null;
           if (q.logic && q.logic.triggerQuestionId) {
-            const triggerIndex = validQuestions.findIndex(vq => vq.id === q.logic.triggerQuestionId);
+            const triggerIndex = validQuestions.findIndex(vq => vq.id === q.logic!.triggerQuestionId);
             if (triggerIndex !== -1 && triggerIndex < validQuestions.indexOf(q)) {
               dbLogic = {
                 action: 'show',
